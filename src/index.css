@@ -1,0 +1,15 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Mobile scroll offset - Used to offset scroll position on mobile for state navbar like punjab*/
+@media (max-width: 767px) {
+	.mobile-scroll-offset {
+		scroll-margin-top: 64px; /* or your navbar's exact height */
+	}
+}
+@media (min-width: 768px) {
+	.mobile-scroll-offset {
+		scroll-margin-top: 0;
+	}
+}
