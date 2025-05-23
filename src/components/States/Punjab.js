@@ -168,7 +168,6 @@ const Punjab = () => {
 	const [isAmritsarExpanded, setIsAmritsarExpanded] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [selectedTopic, setSelectedTopic] = useState(null);
-	const contentRef = useRef(null);
 
 	const topicRefs = useRef({});
 	const stateHeadingRef = useRef(null);
@@ -205,15 +204,16 @@ const Punjab = () => {
 		}
 	};
 
-	// Scroll to content when topic is selected
 	useEffect(() => {
-		if (selectedTopic && contentRef.current) {
-			contentRef.current.scrollIntoView({
-				behavior: "smooth",
-				block: "start",
-			});
+		if (isMenuOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "";
 		}
-	}, [selectedTopic]);
+		return () => {
+			document.body.style.overflow = "";
+		};
+	}, [isMenuOpen]);
 
 	return (
 		<div className="flex flex-col md:flex-row min-h-screen bg-[#f9fafb] text-[#333]">
